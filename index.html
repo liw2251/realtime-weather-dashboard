@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우리동네 날씨 & 미세먼지</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌤️ 우리동네 날씨 & 미세먼지</h1>
+            <button id="refresh-btn" class="refresh-btn">🔄 새로고침</button>
+        </header>
+
+        <main>
+            <!-- 로딩 상태 -->
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>위치 정보를 가져오는 중...</p>
+            </div>
+
+            <!-- 에러 메시지 -->
+            <div id="error" class="error hidden">
+                <p class="error-message"></p>
+                <button id="retry-btn" class="retry-btn">다시 시도</button>
+            </div>
+
+            <!-- 날씨 정보 -->
+            <section id="weather-section" class="weather-section hidden">
+                <div class="location-info">
+                    <h2 id="location-name">위치 확인 중...</h2>
+                    <p id="current-time"></p>
+                </div>
+
+                <div class="weather-main">
+                    <div class="weather-icon">
+                        <img id="weather-icon" src="" alt="날씨 아이콘">
+                    </div>
+                    <div class="temperature">
+                        <span id="temp" class="temp-value">--</span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                    <div class="weather-description">
+                        <p id="weather-desc">--</p>
+                    </div>
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <span class="detail-label">🌡️ 체감온도</span>
+                        <span id="feels-like" class="detail-value">--°C</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💧 습도</span>
+                        <span id="humidity" class="detail-value">--%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💨 풍속</span>
+                        <span id="wind-speed" class="detail-value">-- m/s</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 미세먼지 정보 -->
+            <section id="air-quality-section" class="air-quality-section hidden">
+                <h3>💨 대기질 정보</h3>
+
+                <div class="air-quality-main">
+                    <div class="air-quality-grade" id="air-grade-display">
+                        <span class="grade-text" id="air-grade-text">--</span>
+                    </div>
+                </div>
+
+                <div class="air-quality-details">
+                    <div class="air-item">
+                        <div class="air-label">미세먼지 (PM10)</div>
+                        <div class="air-value-container">
+                            <span id="pm10-value" class="air-value">--</span>
+                            <span class="air-unit">㎍/m³</span>
+                            <span id="pm10-grade" class="air-grade-badge">--</span>
+                        </div>
+                    </div>
+                    <div class="air-item">
+                        <div class="air-label">초미세먼지 (PM2.5)</div>
+                        <div class="air-value-container">
+                            <span id="pm25-value" class="air-value">--</span>
+                            <span class="air-unit">㎍/m³</span>
+                            <span id="pm25-grade" class="air-grade-badge">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="station-info">
+                    <p id="station-name">측정소: --</p>
+                    <p id="measure-time">측정시간: --</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>데이터 제공: OpenWeatherMap & 에어코리아</p>
+        </footer>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
